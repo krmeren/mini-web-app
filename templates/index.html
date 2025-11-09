@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Web App</title>
+</head>
+<body>
+    <h1>Merhaba Dünya!</h1>
+
+    <!-- Form -->
+    <form method="POST">
+        <label for="name">İsminiz:</label>
+        <input type="text" name="name" id="name">
+        <button type="submit">Gönder</button>
+    </form>
+
+    <!-- Form gönderildiğinde mesaj göster -->
+    {% if name %}
+        <p>Merhaba, {{ name }}!</p>
+    {% endif %}
+</body>
+</html>
