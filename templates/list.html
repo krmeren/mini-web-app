@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İsim Listesi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f6fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 60px;
+    }
+
+    h2 {
+      color: #2f3640;
+      margin-bottom: 25px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    li {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+      color: #353b48;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #00a8ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      background-color: #0097e6;
+    }
+
+    .empty {
+      color: #718093;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kaydedilen İsimler</h2>
+
+  {% if users %}
+    <ul>
+      {% for user in users %}
+        <li>{{ user[1] }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">Henüz isim eklenmedi.</div>
+  {% endif %}
+
+  <a href="/">Yeni İsim Ekle</a>
+</body>
+</html>
