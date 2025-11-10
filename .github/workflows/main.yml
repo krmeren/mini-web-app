@@ -33,11 +33,11 @@ jobs:
 
       # Railway deploy (web deploy token kullan)
       - name: Deploy to Railway
-        uses: railwayapp/railway-action@v2
-        with:
-          railwayToken: ${{ secrets.RailwayDeployToken }}
-          projectId: "8e4d4961-06bd-4e1a-a8a4-15bbffa90fc1"
-          environment: "production"
+        run: |
+            npm install -g @railway/cli
+            railway up
+        env:
+            RAILWAY_TOKEN: ${{ secrets.RailwayDeployToken }}
 
 
          
