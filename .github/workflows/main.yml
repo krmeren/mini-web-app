@@ -9,26 +9,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # Repo'yu checkout et
+      - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Python kur
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.14'
 
+      # Dependencies yükle
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Testleri çalıştır
       - name: Run tests
         run: python -m unittest discover || echo "No tests found"
 
+      # Docker image build et
       - name: Build Docker image
         run: docker build -t mini-web-app .
 
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
+      # Railway deploy (web deploy token kullan)
+      - name: Deploy to Railway
+        uses: railwayapp/railway-action@v2
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "mini-web-app"
-          heroku_email: "<GitHub_e-mailiniz>"
+          railwayToken: ${e3512df4-06d5-4daa-99e9-70a81d517cff}
+          projectId: "8e4d4961-06bd-4e1a-a8a4-15bbffa90fc1"
+          environment: "production"
